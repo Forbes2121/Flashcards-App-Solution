@@ -19,6 +19,7 @@ function DeckView () {
         
         return () => abortController.abort()
     },[deckId])
+    
     const deleteFunction = (event) => {
         if (window.confirm("Delete this deck?")) {
          // "deleteDeck" api call

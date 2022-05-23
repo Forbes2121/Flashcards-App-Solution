@@ -35,14 +35,14 @@ function CardEdit ( { card,  setCard } ) {
     }, [cardId, setCard]);
 
     
-    const handleFrontChange = (event) => {
+    const handleFront = (event) => {
         // set state for front of card based on inputted form data. this is only used to display up-to-date info in the form
         setFront(event.target.value);   
         // updating the actual value for the card that will eventually be submitted with the form
         setCard({...card, front: event.target.value,});
     }
   
-    const handleBackChange = (event) => {
+    const handleBack = (event) => {
         // set state for back of card based on inputted form data. this is only used to display up-to-date info in the form
         setBack(event.target.value); 
         // updating the actual value for the card that will eventually be submitted with the form
@@ -74,11 +74,11 @@ function CardEdit ( { card,  setCard } ) {
             <form name="addCard" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="front" className="form-label">Front</label>
-                    <textarea type="text" className="form-control" rows="3" id="front" onChange={handleFrontChange}  value={front}></textarea>
+                    <textarea type="text" className="form-control" rows="3" id="front" onChange={handleFront}  value={front}></textarea>
                 </div>
                 <div className="form-group">
                     <label htmlFor="back" className="form-label">Back</label>
-                    <textarea type="text" className="form-control" rows="3" id="back" onChange={handleBackChange}  value={back}></textarea>
+                    <textarea type="text" className="form-control" rows="3" id="back" onChange={handleBack}  value={back}></textarea>
                 </div>
                 <button type="button" className="btn btn-secondary" style={cardStyle} onClick={() => history.push(`/decks/${deckId}`)}>Cancel</button>
                 <button type="submit" className="btn btn-primary">Submit</button>
