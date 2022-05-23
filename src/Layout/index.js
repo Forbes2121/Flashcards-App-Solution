@@ -8,10 +8,12 @@ import CreateDeck from "./CreateDeck";
 import { listDecks } from "./../utils/api";
 
 function Layout() {
+  //set states and initial values 
     const [deckList, setDeckList] = useState([]);
     const addDeck = (deck) => setDeckList([...deckList, deck]);
     const removeDeck = (deckId) => setDeckList(deckList.filter((deck) => deck.id !== deckId))
 
+    //effect hook for loading and listing decks
     useEffect(() => {
         async function loadDecks() {
             const decks = await listDecks();
@@ -20,8 +22,9 @@ function Layout() {
         loadDecks();
     }, []);
 
+    //main starting page where the "/" path leads to our decklist and ability to create a new deck
     return (
-        <>
+        <div>
             <Header />
             <div className="container">
                 <Switch>
@@ -40,7 +43,7 @@ function Layout() {
                     </Route>
                 </Switch>
             </div>
-        </>
+        </div>
     );
 }
 

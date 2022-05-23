@@ -6,7 +6,7 @@ function Study({ deck, deckList, cardList }) {
     const params = useParams();
 
     return (
-        <>
+        <div>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
@@ -16,7 +16,7 @@ function Study({ deck, deckList, cardList }) {
             </nav>
             <h1>{deck.name}: Study</h1>
             <CardDisplay deck={deck} cardList={cardList}/>
-        </>
+        </div>
     );
 }
 

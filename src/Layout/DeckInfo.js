@@ -8,36 +8,42 @@ import EditCard from "./EditCard";
 import EditDeck from "./EditDeck";
 
 function DeckInfo({ removeDeck, deckList }) {
+    //initialize hooks and set states
     const params = useParams();
     const history = useHistory();
     const [cardList, setCardList] = useState([]);
     const [deck, setDeck] = useState({});
 
+    //delete handler
     function confirmDelete() {
-        let confirm = window.confirm("Delete this deck?\n\nYou will not be able to recover it.");
-        if (confirm) {
+        if (window.confirm("Delete this deck?\n\nYou will not be able to recover it.")) {
             deleteDeck(deck.id);
             removeDeck(deck.id);
             history.push("/");
         }
     }
 
+    //remove card handler
     function removeCard(id) {
         setCardList(cardList.filter((card) => card.id !== id));
     }
 
+    //add card handler
     function addCard(card) {
         setCardList([...cardList, card])
     }
 
+    //edit card handler
     function editCard(cardData) {
         setCardList(cardList.map((card) => cardData.id === card.id ? cardData : card))
     }
 
+    //edit deck handler
     function editDeck(deckData) {
         setDeck(deckData);
     }
 
+    //effect hook to establish the card list and the current deck
     useEffect(() => {
         async function loadData() {
             const cards = await listCards(params.deckId);
@@ -49,7 +55,7 @@ function DeckInfo({ removeDeck, deckList }) {
     }, []);
 
     return (
-        <>
+        <div>
             <Switch>
                 <Route path="/decks/:deckId/study">
                     <Study deckList={deckList} deck={deck} cardList={cardList}/>
@@ -85,7 +91,7 @@ function DeckInfo({ removeDeck, deckList }) {
                     <CardList cardList={cardList} removeCard={removeCard}/>
                 </Route>
             </Switch>
-        </>
+        </div>
     )
 }
 

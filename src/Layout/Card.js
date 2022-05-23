@@ -4,16 +4,17 @@ import { Link } from "react-router-dom";
 
 function Card({ card, removeCard }) {
 
+    //check if they want to delete and if so delete the card and remove it
     function confirmDelete() {
-        let confirm = window.confirm("Delete this card?\n\nYou will not be able to recover it.");
-        if (confirm) {
+        if (window.confirm("Delete this card?\n\nYou will not be able to recover it.")) {
             deleteCard(card.id);
             removeCard(card.id);
         }
     }
 
+    //Card with edit and delete buttons
     return (
-        <>
+        <div>
             <div className="card">
                 <div className="card-body">
                     <div className="card-text container">
@@ -30,7 +31,7 @@ function Card({ card, removeCard }) {
                     <button style={{float:"right"}} className="btn btn-danger" onClick={confirmDelete}>Delete</button>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

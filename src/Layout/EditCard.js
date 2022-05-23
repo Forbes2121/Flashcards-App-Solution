@@ -3,6 +3,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { updateCard, readCard } from "./../utils/api";
 
 function EditCard({ deck, editCard }) {
+    //initialize hooks and set states
     const params = useParams();
     const history = useHistory();
 
@@ -14,6 +15,7 @@ function EditCard({ deck, editCard }) {
     const [back, setBack] = useState("");
     const handleBackChange = (event) => setBack(event.target.value);
 
+    //effect hook to get card and update the card
     useEffect(() => {
         async function getCard() {
             const cardInfo = await readCard(params.cardId);
@@ -24,6 +26,7 @@ function EditCard({ deck, editCard }) {
         getCard();
     }, []);
 
+    //submit handler to edit the card
     async function handleSubmit(event) {
         event.preventDefault();
         card.front = front;
@@ -34,7 +37,7 @@ function EditCard({ deck, editCard }) {
     }
 
     return (
-        <>
+        <div>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
@@ -47,32 +50,16 @@ function EditCard({ deck, editCard }) {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="front" className="form-label">Front</label>
-                    <textarea
-                        type="text"
-                        className="form-control"
-                        rows="3"
-                        id="front"
-                        placeholder="Front side of card"
-                        onChange={handleFrontChange}
-                        value={front}
-                    ></textarea>
+                    <textarea type="text" className="form-control" rows="3" id="front" placeholder="Front side of card" onChange={handleFrontChange} value={front}></textarea>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="back" className="form-label">Back</label>
-                    <textarea
-                        type="text"
-                        className="form-control"
-                        rows="3"
-                        id="back"
-                        placeholder="Back side of card"
-                        onChange={handleBackChange}
-                        value={back}
-                    ></textarea>
+                    <textarea type="text" className="form-control" rows="3" id="back" placeholder="Back side of card" onChange={handleBackChange} value={back}></textarea>
                 </div>
                 <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-1">Done</Link>
                 <button type="submit" className="btn btn-primary">Save</button>
             </form>
-        </>
+        </div>
     );
 }
 

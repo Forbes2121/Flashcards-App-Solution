@@ -3,17 +3,19 @@ import { listCards, deleteDeck } from "./../utils/api";
 import { Link } from "react-router-dom";
 
 function Deck({ deck, removeDeck }) {
+    //set states for cardList and cardCount
     const [cardList, setCardList] = useState([]);
     const [cardCount, setCardCount] = useState(0);
 
+    //delete confirmation, which if true will delete and remove the deck
     function confirmDelete() {
-        let confirm = window.confirm("Delete this deck?\n\nYou will not be able to recover it.");
-        if (confirm) {
+        if (window.confirm("Delete this deck?\n\nYou will not be able to recover it.")) {
             deleteDeck(deck.id);
             removeDeck(deck.id);
         }
     }
 
+    //effect hook to load in cards to list
     useEffect(() => {
         async function loadCards() {
             const cards = await listCards(deck.id);
@@ -27,8 +29,9 @@ function Deck({ deck, removeDeck }) {
             setCardCount(cardList.reduce((total, card) => deck.id === card.deckId ? total + 1 : total, 0));
         }
     }, [cardList]);
+    
     return (
-        <>
+        <div>
             <div className="card">
                 <div className="card-body">
                     <h5 className="card-title" style={{float:"left"}}>{deck.name}</h5>
@@ -40,7 +43,7 @@ function Deck({ deck, removeDeck }) {
                     <button style={{float:"right"}} className="btn btn-danger" onClick={confirmDelete}>Delete</button>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
