@@ -9,6 +9,11 @@
       "name": "Testing my new deck creation",
       "description": "This is the description of a deck",
       "id": 6
+    },
+    {
+      "name": "New Deck to play around with",
+      "description": "Using this for testing my code",
+      "id": 7
     }
   ],
   "cards": [
@@ -47,6 +52,24 @@
       "back": "Add back",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "Front of card 1",
+      "back": "Back of card test 1",
+      "deckId": 7,
+      "id": 8
+    },
+    {
+      "front": "front 2",
+      "back": "back 2",
+      "deckId": 7,
+      "id": 9
+    },
+    {
+      "front": "front 3",
+      "back": "back 3",
+      "deckId": 7,
+      "id": 10
     }
   ]
 }

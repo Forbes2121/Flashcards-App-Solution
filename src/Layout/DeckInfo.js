@@ -52,7 +52,7 @@ function DeckInfo({ removeDeck, deckList }) {
             setDeck(deckObj);
         }
         loadData();
-    }, []);
+    }, [params.deckId]);
 
     return (
         <div>

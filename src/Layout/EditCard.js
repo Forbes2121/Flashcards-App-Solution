@@ -24,7 +24,7 @@ function EditCard({ deck, editCard }) {
             setBack(cardInfo.back);
         }
         getCard();
-    }, []);
+    }, [params.cardId]);
 
     //submit handler to edit the card
     async function handleSubmit(event) {

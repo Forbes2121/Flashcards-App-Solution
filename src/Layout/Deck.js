@@ -22,7 +22,7 @@ function Deck({ deck, removeDeck }) {
             setCardList(cards);
         }
         loadCards();
-    }, []);
+    }, [deck.id]);
 
     useEffect(() => {
         if (cardList.length > 0) {

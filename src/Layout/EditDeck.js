@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { updateDeck } from "./../utils/api";
 
 function EditDeck({ deck, editDeck }) {
