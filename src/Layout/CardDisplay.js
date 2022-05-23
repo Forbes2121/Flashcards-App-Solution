@@ -18,8 +18,7 @@ function CardDisplay({ deck, cardList }) {
     //go to the next card as long as you haven't reached the end of the cards, then decide to restart or go home page
     function nextCard() {
         if (cardIndex === cardCount - 1) {
-            let restart = window.confirm("Restart cards?\n\nClick 'cancel' to return to the home page.");
-            if (restart) {
+            if (window.confirm("Restart cards?\n\nClick 'cancel' to return to the home page.")) {
                 setCardIndex(0);
                 setFlipped(false);
                 return;

@@ -17,7 +17,7 @@ function CreateDeck({ addDeck }) {
     //submit handler, creates a new deck with name and description then adds the new deck to list
     async function handleSubmit(event) {
         event.preventDefault();
-        const deck = {name: name, description: description}
+        const deck = {name: name, description: description};
         const newDeck = await createDeck(deck);
         addDeck(newDeck);
         history.push(`/decks/${newDeck.id}`);

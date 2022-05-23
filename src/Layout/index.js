@@ -11,7 +11,7 @@ function Layout() {
   //set states and initial values 
     const [deckList, setDeckList] = useState([]);
     const addDeck = (deck) => setDeckList([...deckList, deck]);
-    const removeDeck = (deckId) => setDeckList(deckList.filter((deck) => deck.id !== deckId))
+    const removeDeck = (deckId) => setDeckList(deckList.filter((deck) => deck.id !== deckId));
 
     //effect hook for loading and listing decks
     useEffect(() => {

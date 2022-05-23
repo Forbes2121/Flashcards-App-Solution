@@ -14,7 +14,7 @@ function CreateCard({ deck, addCard }) {
     //upon submission of a card create, establishes a new card and sets initial values for the state
     async function handleSubmit(event) {
         event.preventDefault();
-        const card = {front: front, back: back}
+        const card = {front: front, back: back};
         const newCard = await createCard(deck.id, card);
         addCard(newCard);
         setFront("");

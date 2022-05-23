@@ -30,12 +30,12 @@ function DeckInfo({ removeDeck, deckList }) {
 
     //add card handler
     function addCard(card) {
-        setCardList([...cardList, card])
+        setCardList([...cardList, card]);
     }
 
     //edit card handler
     function editCard(cardData) {
-        setCardList(cardList.map((card) => cardData.id === card.id ? cardData : card))
+        setCardList(cardList.map((card) => cardData.id === card.id ? cardData : card));
     }
 
     //edit deck handler
